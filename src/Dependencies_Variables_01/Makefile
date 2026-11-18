@@ -1,10 +1,14 @@
-CFILES = main.c message.c
+OBJ_FILES = main.o message.o
 
-test: $(CFILES)
-	gcc $(CFILES) -o test
+test: $(OBJ_FILES)
+	gcc $^ -o test
 
-clean:
-	rm -f test
+%.o: %.c
+	gcc -c $^
 
 run: test
 	@./test
+
+clean:
+	rm -f *.o
+	rm -f test
