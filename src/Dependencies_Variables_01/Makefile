@@ -1,7 +1,10 @@
-OBJ_FILES = main.o message.o
+SRC_FILES = main.c message.c
+OBJ_FILES = $(SRC_FILES:%.c=%.o)
+
+$(info $(OBJ_FILES))
 
 test: $(OBJ_FILES)
-	gcc $^ -o test
+	gcc $^ -o $@
 
 %.o: %.c
 	gcc -c $^
